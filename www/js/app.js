@@ -90,7 +90,10 @@ angular.module('starter', ['ionic'])
 		  //template:'From date'
 		  })
 		}else if(checkConnectionStatus()){
-		
+		  $ionicPopup.alert({
+                title: 'Network Status',
+                content: 'No Internet Connection'
+        	  })
 		}else{
 			$ionicLoading.show();
 					$http({
