@@ -1343,6 +1343,7 @@ $scope.update = function(sa) {
 //	}
 //        //document.getElementById("accBalanceLnk").addEventListener("click", accountBalance, false);
 //     }
+document.addEventListener("offline", checkConnectionStatus, false);
 })
 
 function checkConnectionStatus() {
