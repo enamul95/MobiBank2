@@ -355,14 +355,14 @@
 		  <div class="item item-input-inset">    
 			<span class="input-label">From Date </span>
 			<label class="item-input-wrapper input-textfield-custom">
-			 <input type="text" ng-model="search.acFromDate" />
+			 <input type="date" ng-model="search.acFromDate"  />
 			</label>
 		  </div>
 		  
 		   <div class="item item-input-inset">    
 			<span class="input-label">To date</span>
 			<label class="item-input-wrapper input-textfield-custom">
-			 <input type="text" ng-model="search.acToDate" />
+			 <input type="date" ng-model="search.acToDate" />
 			</label>
 		  </div>
 		  
@@ -743,6 +743,7 @@
 			</label>
 		  </div>	
 			
+		 	
 			 			
 				<label class="item item-input">
 				<button class="button button-positive" ng-click="DoSubmitAction(talkTime)" >
@@ -750,6 +751,8 @@
 			</button>
 		 </label>
 			
+			
+          
         </ion-content>
       </ion-view>
     </script>
