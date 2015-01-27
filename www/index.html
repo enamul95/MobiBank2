@@ -34,6 +34,8 @@
            height: 35px;
            border: 1px solid #aaaaaa;
            background: inherit;
+		   padding-right:0;
+		   
        }
        
        .div-custom {
@@ -73,6 +75,66 @@
             text-overflow: ellipsis;
             vertical-align: top;
         }
+		
+		
+		
+				
+			.input-label {
+			-moz-box-flex: 1;
+			color: #1f62af;
+			display: table;
+			flex: 1 0 100px;
+			font-size: 80%;
+			max-width: 200px;
+			padding: 3px 5px 5px 0;
+			margin-left:1px;
+			width: 40%;
+			
+		}
+		
+		.input-label_radiobutton {
+			-moz-box-flex: 1;
+			color: #1f62af;
+			display: table;
+			flex: 1 0 100px;
+			font-size: 80%;
+			max-width: 200px;
+			padding: 3px 5px 5px 0;
+			margin-left:1px;
+			width: 60%;
+			
+		}
+		.item-select select {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    color: #333;
+    cursor: pointer;
+    direction: rtl;
+    font-size: 14px;
+    max-width: 65%;
+    padding: 14px 25px 16px 16px;
+    position: absolute;
+    right: 0;
+    text-indent: 0.01px;
+    text-overflow: "";
+    top: 0;
+    white-space: nowrap;
+	
+	 .input-textfield-border {
+           height: 35px;
+           border: 1px solid #1f62af;
+           background: inherit;
+       }
+	   
+	  .item-input-wrapper input {
+    background: none repeat scroll 0 0 transparent;
+    height: 29px;
+    line-height: 18px;
+    padding-left: 0;
+	
+}
+}
     </style>
   </head>
   <body ng-app="starter">
@@ -278,29 +340,33 @@
       </ion-nav-back-button>
     </ion-nav-bar>
         <ion-content has-header="true" padding="true">		
-	<div class="list">
+	
 		
-						
-			<label class="item item-input item-select">
-				<div class="input-label">
-				  Source A/c
-				</div>
-				<select ng-model="sa.item" ng-change="update(sa)">
+			  
+			 	<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+					<select ng-model="sa.item" ng-change="update(sa)">
 				  <option value="" ng-selected="selected">-Select One-</option>
 						<option ng-repeat="x in accountListDescription" valu="{{x.sAccountNumber}}">{{x.sAccountNumber}}</option>
 				</select>
-			  </label>
-						
+			  </div>		
 		 
-		<label class="item item-input">
-			<span class="input-label">From Date</span>
-			<input type="text" ng-model="search.acFromDate" />
-		  </label>
 		  
-		   <label class="item item-input">
+		  <div class="item item-input-inset">    
+			<span class="input-label">From Date </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text" ng-model="search.acFromDate" />
+			</label>
+		  </div>
+		  
+		   <div class="item item-input-inset">    
 			<span class="input-label">To date</span>
-			<input type="text" ng-model="search.acToDate" />
-		  </label>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text" ng-model="search.acToDate" />
+			</label>
+		  </div>
+		  
+		  
 			
 		<label class="item item-input">
 		<button class="button button-positive" ng-click="SearchAction(search)">
@@ -308,14 +374,9 @@
 	</button>
  </label>
 			
-					
+	
 		
-			
-	</div>
-		
- <div class="list" style="margin-top:10px">
-			
-			
+ <div class="list" style="margin-top:10px">			
 			
 			
 			  <div ng-app="" ng-init="{{accountStatementNodes}}">
@@ -382,87 +443,95 @@
     </ion-nav-bar>
 	
         <ion-content has-header="true" padding="true">
-       
-		<div class="list">
 		
-			
-				<label class="item item-input item-select">
-				<div class="input-label">
-				  Source A/c
-				</div>
+		
+  
+			<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+				
 				<select ng-model="sa.item" ng-change="update(sa)">
 				  <option value="" ng-selected="selected">-Select One-</option>
 						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
 				</select>
-			  </label>
+			  </div>
 			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
 			
-			
-			<label class="item item-input">
-			<span class="input-label">Account Title</span>
-			<input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
-		  </label>
-		  
-		  <label class="item item-input">
-			<span class="input-label">Balance</span>
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" value={{availableBalance}} >
-		  </label>
+			</label>
+		  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Currency</span>
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text"  value={{currencyCode}} >
-		  </label>
+			</label>
+		  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Amount</span>
+			 <div class="item item-input-inset">    
+			<span class="input-label">Amount </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" ng-model="fundtransfer.amount">
-		  </label>
+			</label>
+		  </div>
 			
 		
-			<label class="item item-input item-select">
-				<div class="input-label">
-				 Destination A/c
-				</div>
+			
+			<div class="item item-input item-select">    
+				<span class="input-label">Destination A/c </span>
 				<select ng-model="da.destitionItem" ng-change="DestinationUpdate(da)">
 				 <option value="">-Select One-</option>
 				  <option ng-repeat="y in destrinationaAccountListNodes">{{y.sDestrinationAccountNo}}</option>
 				</select>
-			  </label>
+			  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Account Title</span>
+			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" value={{destinationAccountTitle}}>
-		  </label>
+			</label>
+		  </div>
 			
-			
-			<label class="item item-input">
-			<span class="input-label">Currency</span>
+		
+			<div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text"  value={{destinationCurrency}}>
-		  </label>
+			</label>
+		  </div>
+		
 		  
-		  <label class="item item-input">
-			<span class="input-label">Remarks</span>
+			<div class="item item-input-inset">    
+			<span class="input-label">Remarks </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" ng-model="fundtransfer.remarks" >
-		  </label>
+			</label>
+		  </div>
 		  
-			 <label class="item item-input">
-			<span class="input-label">Pin Code</span>
+		 <div class="item item-input-inset">    
+			<span class="input-label">Pin Code </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="password" ng-model="fundtransfer.pinCode" >
-		  </label>
+			</label>
+		  </div>			
 			
-			
-			
-				
-		<label class="item item-input">
-		<button class="button button-positive" ng-click="DoSubmitAction(fundtransfer)">
-	 Submit
-	</button>
- </label>
-			
-				
-         </div>
-		 
-		 	
+						
+				<label class="item item-input">
+				<button class="button button-positive" ng-click="DoSubmitAction(fundtransfer)">
+			 Submit
+			</button>
+		 </label>
+		
         </ion-content>
       </ion-view>
     </script>
@@ -478,76 +547,98 @@
       </ion-nav-back-button>
     </ion-nav-bar>
         <ion-content has-header="true" padding="true">
+		
+		
+		
+		
 		<div class="list">
 		
-				<label class="item item-input">
-			<span class="input-label">Request Date</span>
-			<input type="text" ng-model="fundtransfer.requestDate">
-		  </label>
 			
-				<label class="item item-input item-select">
-				<div class="input-label">
-				  Source A/c
-				</div>
+		  <div class="item item-input-inset">    
+			<span class="input-label">Request Date </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="text" ng-model="fundtransfer.requestDate">
+			</label>
+		  </div>
+			
+			<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Source A/c </span>
+				
 				<select ng-model="sa.item" ng-change="update(sa)">
 				  <option value="" ng-selected="selected">-Select One-</option>
 						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
 				</select>
-			  </label>
+			  </div>
 			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
 			
-			
-			<label class="item item-input">
-			<span class="input-label">Account Title</span>
-			<input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
-		  </label>
-		  
-		  <label class="item item-input">
-			<span class="input-label">Balance</span>
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" value={{availableBalance}} >
-		  </label>
+			</label>
+		  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Currency</span>
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text"  value={{currencyCode}} >
-		  </label>
+			</label>
+		  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Amount</span>
+		  
+		  <div class="item item-input-inset">    
+			<span class="input-label">Amount </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" ng-model="fundtransfer.amount">
-		  </label>
+			</label>
+		  </div>
 			
-		
-			<label class="item item-input item-select">
-				<div class="input-label">
-				 Destination A/c
-				</div>
+				<div class="item item-input item-select">    
+				<span style="padding-left:0" class="input-label"> Destination A/c</span>
+				
 				<select ng-model="da.destitionItem" ng-change="DestinationUpdate(da)">
 				 <option value="">-Select One-</option>
 				  <option ng-repeat="y in destrinationaAccountListNodes">{{y.sDestrinationAccountNo}}</option>
 				</select>
-			  </label>
+			  </div>
+		
 			
-			<label class="item item-input">
-			<span class="input-label">Account Title</span>
+			 <div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" value={{destinationAccountTitle}}>
-		  </label>
+			</label>
+		  </div>
 			
-			
-			<label class="item item-input">
+			 <div class="item item-input-inset">    
 			<span class="input-label">Currency</span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text"  value={{destinationCurrency}}>
-		  </label>
-		  
-		  <label class="item item-input">
+			</label>
+		  </div>
+			
+		 <div class="item item-input-inset">    
 			<span class="input-label">Remarks</span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" ng-model="fundtransfer.remarks" >
-		  </label>
+			</label>
+		  </div>
 		  
-			 <label class="item item-input">
+		   <div class="item item-input-inset">    
 			<span class="input-label">Pin Code</span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="password" ng-model="fundtransfer.pinCode" >
-		  </label>
+			</label>
+		  </div>
+		 
+		  
 			
 			
 			
@@ -578,67 +669,80 @@
     </ion-nav-bar>
         <ion-content has-header="true" padding="true">
         
-			<div class="list">
-			<label class="item item-input item-select">
-				<div class="input-label">
-				  Source A/c
-				</div>
+			
+			<div class="item item-input item-select">    
+				<span class="input-label"> Source A/c </span>
+				
 				<select ng-model="sa.item" ng-change="update(sa)">
 				  <option value="" ng-selected="selected">-Select One-</option>
 						<option ng-repeat="x in accountListDescription" >{{x.sAccountDescription}}</option>
 				</select>
-			  </label>
+			  </div>
 			
+			<div class="item item-input-inset">    
+			<span class="input-label">Account Title </span>
+			<label class="item-input-wrapper input-textfield-custom">
+			 <input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
+			</label>
+		  </div>
 			
-			
-			<label class="item item-input">
-			<span class="input-label">Account Title</span>
-			<input type="text"  id="txtFundTransferAccountTitle" value={{accountTitle}} readonly />
-		  </label>
-		  
-		  <label class="item item-input">
-			<span class="input-label">Balance</span>
+			<div class="item item-input-inset">    
+			<span class="input-label">Balance </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" value={{availableBalance}} >
-		  </label>
+			</label>
+		  </div>
 			
-			<label class="item item-input">
-			<span class="input-label">Currency</span>
+		  
+		 <div class="item item-input-inset">    
+			<span class="input-label">Currency </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text"  value={{currencyCode}} >
-		  </label>			
+			</label>
+		  </div>			
 				
 			 
-		
-			
-			<label class="item item-input item-select">
-				<div class="input-label">
-				  Operator
-				</div>
+			<div class="item item-input item-select">    
+				<span class="input-label"> Operator </span>
+				
 				<select ng-model="mobileoperator.item" ng-change="updateMoileOperator(mobileoperator)">
 				  <option value="">-Select One-</option>
 				  <option ng-repeat="x in mobileOperatorsNamesAndCodesNodes">{{x.mobileOperatorName}}</option>
 				</select>
-			  </label>
-			  
+			  </div>
+			
+			
+			
 			  
 			  <label class="item item-input">
 			<span class="input-label">Mobile Type</span>
+			 <label class="input-label_radiobutton">
 			<ion-radio  id="mobileTypeRadio" ng-click="radioSubmit('PRE')"  >PrePaid</ion-radio>
 			<ion-radio  id="mobileTypeRadio"  ng-click="radioSubmit('PST')" >Post Paid</ion-radio>
+			</label>
 		  </label>		
-			
-			<label class="item item-input">
-			<span class="input-label">Mobile No.</span>
+		  
+		   <div class="item item-input-inset">    
+			<span class="input-label">Mobile No. </span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="text" ng-model="talkTime.mobileNo"  >
-		  </label>	
-			  	
-			  	<label class="item item-input">
+			</label>
+		  </div>
+
+			  <div class="item item-input-inset">    
 			<span class="input-label">Amount</span>
-			<input type="number"  ng-model="talkTime.amount"  >
-		  </label>	
-		   	<label class="item item-input">
+			<label class="item-input-wrapper input-textfield-custom">
+			<input type="number" ng-model="talkTime.amount" >
+			</label>
+		  </div>	
+		
+			  <div class="item item-input-inset">    
 			<span class="input-label">Pin Code</span>
+			<label class="item-input-wrapper input-textfield-custom">
 			<input type="password" ng-model="talkTime.pinCode"   >
-		  </label>		
+			</label>
+		  </div>	
+			
 			 			
 				<label class="item item-input">
 				<button class="button button-positive" ng-click="DoSubmitAction(talkTime)" >
@@ -646,8 +750,6 @@
 			</button>
 		 </label>
 			
-			
-          
         </ion-content>
       </ion-view>
     </script>
